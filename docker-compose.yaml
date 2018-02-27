@@ -1,0 +1,161 @@
+version: '2'
+
+services:
+ g1n1:
+    build :
+      context : ./dockerfiles 
+      dockerfile : Dockerfile
+    environment : 
+      - GOLDILOCKS_CLUSTER_IP=172.18.18.11
+      - GOLDILOCKS_CLUSTER_PORT=10101
+      - GOLDILOCKS_CLUSTER_GROUP=G1
+      - GOLDILOCKS_MEMBER_NAME=N1
+    image: sundb_group_primary
+    networks:
+      cluster_network:
+        ipv4_address: 172.18.18.11
+      service_network:
+        ipv4_address: 172.19.19.11
+    ports:
+      - "47562:22581"
+ g1n2 :
+    build :
+      context : ./dockerfiles 
+      dockerfile : Dockerfile
+    environment : 
+      - GOLDILOCKS_CLUSTER_IP=172.18.18.12
+      - GOLDILOCKS_CLUSTER_PORT=10101
+      - GOLDILOCKS_CLUSTER_GROUP=G1
+      - GOLDILOCKS_MEMBER_NAME=N2
+    image: sundb_secondary
+    networks:
+      cluster_network:
+        ipv4_address: 172.18.18.12
+      service_network:
+        ipv4_address: 172.19.19.12
+    ports:
+      - "47563:22581"
+ g2n1:
+    build :
+      context : ./dockerfiles 
+      dockerfile : Dockerfile
+    environment : 
+      - GOLDILOCKS_CLUSTER_IP=172.18.18.13
+      - GOLDILOCKS_CLUSTER_PORT=10101
+      - GOLDILOCKS_CLUSTER_GROUP=G2
+      - GOLDILOCKS_MEMBER_NAME=N1
+    image: sundb_group_primary
+    networks:
+      cluster_network:
+        ipv4_address: 172.18.18.13
+      service_network:
+        ipv4_address: 172.19.19.13
+    ports:
+      - "47564:22581"
+ g2n2:
+    build :
+      context : ./dockerfiles 
+      dockerfile : Dockerfile
+    environment : 
+      - GOLDILOCKS_CLUSTER_IP=172.18.18.14
+      - GOLDILOCKS_CLUSTER_PORT=10101
+      - GOLDILOCKS_CLUSTER_GROUP=G2
+      - GOLDILOCKS_MEMBER_NAME=N2
+    image: sundb_secondary
+    networks:
+      cluster_network:
+        ipv4_address: 172.18.18.14
+      service_network:
+        ipv4_address: 172.19.19.14
+    ports:
+      - "47565:22581"
+ g3n1:
+    build :
+      context : ./dockerfiles 
+      dockerfile : Dockerfile
+    environment : 
+      - GOLDILOCKS_CLUSTER_IP=172.18.18.15
+      - GOLDILOCKS_CLUSTER_PORT=10101
+      - GOLDILOCKS_CLUSTER_GROUP=G3
+      - GOLDILOCKS_MEMBER_NAME=N1
+    image: sundb_group_primary
+    networks:
+      cluster_network:
+        ipv4_address: 172.18.18.15
+      service_network:
+        ipv4_address: 172.19.19.15
+    ports:
+      - "47566:22581"
+ g3n2:
+    build :
+      context : ./dockerfiles 
+      dockerfile : Dockerfile
+    environment : 
+      - GOLDILOCKS_CLUSTER_IP=172.18.18.16
+      - GOLDILOCKS_CLUSTER_PORT=10101
+      - GOLDILOCKS_CLUSTER_GROUP=G3
+      - GOLDILOCKS_MEMBER_NAME=N2
+    image: sundb_secondary
+    networks:
+      cluster_network:
+        ipv4_address: 172.18.18.16
+      service_network:
+        ipv4_address: 172.19.19.16
+    ports:
+      - "47567:22581"
+
+ g4n1:
+    build :
+      context : ./dockerfiles 
+      dockerfile : Dockerfile
+    environment : 
+      - GOLDILOCKS_CLUSTER_IP=172.18.18.17
+      - GOLDILOCKS_CLUSTER_PORT=10101
+      - GOLDILOCKS_CLUSTER_GROUP=G4
+      - GOLDILOCKS_MEMBER_NAME=N1
+    image: sundb_group_primary
+    networks:
+      cluster_network:
+        ipv4_address: 172.18.18.17
+      service_network:
+        ipv4_address: 172.19.19.17
+    ports:
+      - "47568:22581"
+ g4n2:
+    build :
+      context : ./dockerfiles 
+      dockerfile : Dockerfile
+    environment : 
+      - GOLDILOCKS_CLUSTER_IP=172.18.18.18
+      - GOLDILOCKS_CLUSTER_PORT=10101
+      - GOLDILOCKS_CLUSTER_GROUP=G4
+      - GOLDILOCKS_MEMBER_NAME=N2
+    image: sundb_secondary
+    networks:
+      cluster_network:
+        ipv4_address: 172.18.18.18
+      service_network:
+        ipv4_address: 172.19.19.18
+    ports:
+      - "47569:22581"
+
+
+networks:
+  cluster_network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.18.18.0/24
+        gateway: 172.18.18.1
+  service_network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.19.19.0/24
+        gateway: 172.19.19.1
