@@ -11,10 +11,10 @@ $ git clone https://github.com/ckh0618/docker_goldilocks
 $ cd docker_goldilocks 
 ```
 
-* Put a Goldilocks cluster package and license file into dockerfiles/goldilocks_packages. You can get goldilocks package and license by email ( technet@sunjesoft.com)
+* Put a Goldilocks cluster package and license file into dockerfiles/goldilocks_package. 
 
 ```sh
-$ cp goldilocks-server-venus.3.1.9-linux-x86_64.tar.gz  dockerfiles/goldilocks_packages
+$ cp goldilocks-server-venus.3.1.9-linux-x86_64.tar.gz  dockerfiles/goldilocks_package
 $ cp license dockerfiles/goldilocks_packages
 ``` 
 
