@@ -8,14 +8,14 @@ ENV GOLDILOCKS_DATA /goldilocks_data
 
 ENV PATH $PATH:$GOLDILOCKS_HOME/bin
 
-ADD sundb_packages /sundb_packages
+ADD goldilocks_package /goldilocks_package
 ADD scripts /scripts
 
-RUN cd /sundb_packages && gzip -cd goldilocks*.tar.gz | tar xvf -  > /dev/null \
-    && mv goldilocks-server-venus.*-linux-x86_64/goldilocks_home ..  \
-    && mv goldilocks-server-venus.*-linux-x86_64/goldilocks_data .. 
+RUN cd /goldilocks_package && gzip -cd goldilocks*.tar.gz | tar xvf -  > /dev/null \
+    && mv goldilocks-*/goldilocks_home ..  \
+    && mv goldilocks-*/goldilocks_data .. 
 
-RUN cp /sundb_packages/license $GOLDILOCKS_HOME/license/license
+RUN cp /goldilocks_package/license $GOLDILOCKS_HOME/license/license
 
 RUN  chmod +x /scripts/*
 

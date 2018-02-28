@@ -2,6 +2,7 @@ version: '2'
 
 services:
  g1n1:
+    hostname: g1n1
     build :
       context : ./dockerfiles 
       dockerfile : Dockerfile
@@ -10,7 +11,7 @@ services:
       - GOLDILOCKS_CLUSTER_PORT=10101
       - GOLDILOCKS_CLUSTER_GROUP=G1
       - GOLDILOCKS_MEMBER_NAME=N1
-    image: sundb_group_primary
+    image: goldilocks_cluster
     networks:
       cluster_network:
         ipv4_address: 172.18.18.11
@@ -19,6 +20,7 @@ services:
     ports:
       - "47562:22581"
  g1n2 :
+    hostname: g1n2
     build :
       context : ./dockerfiles 
       dockerfile : Dockerfile
@@ -27,7 +29,7 @@ services:
       - GOLDILOCKS_CLUSTER_PORT=10101
       - GOLDILOCKS_CLUSTER_GROUP=G1
       - GOLDILOCKS_MEMBER_NAME=N2
-    image: sundb_secondary
+    image: goldilocks_cluster
     networks:
       cluster_network:
         ipv4_address: 172.18.18.12
@@ -36,6 +38,7 @@ services:
     ports:
       - "47563:22581"
  g2n1:
+    hostname: g2n1
     build :
       context : ./dockerfiles 
       dockerfile : Dockerfile
@@ -44,7 +47,7 @@ services:
       - GOLDILOCKS_CLUSTER_PORT=10101
       - GOLDILOCKS_CLUSTER_GROUP=G2
       - GOLDILOCKS_MEMBER_NAME=N1
-    image: sundb_group_primary
+    image: goldilocks_cluster
     networks:
       cluster_network:
         ipv4_address: 172.18.18.13
@@ -53,6 +56,7 @@ services:
     ports:
       - "47564:22581"
  g2n2:
+    hostname: g2n2
     build :
       context : ./dockerfiles 
       dockerfile : Dockerfile
@@ -61,7 +65,7 @@ services:
       - GOLDILOCKS_CLUSTER_PORT=10101
       - GOLDILOCKS_CLUSTER_GROUP=G2
       - GOLDILOCKS_MEMBER_NAME=N2
-    image: sundb_secondary
+    image: goldilocks_cluster
     networks:
       cluster_network:
         ipv4_address: 172.18.18.14
@@ -70,6 +74,7 @@ services:
     ports:
       - "47565:22581"
  g3n1:
+    hostname: g3n1
     build :
       context : ./dockerfiles 
       dockerfile : Dockerfile
@@ -78,7 +83,7 @@ services:
       - GOLDILOCKS_CLUSTER_PORT=10101
       - GOLDILOCKS_CLUSTER_GROUP=G3
       - GOLDILOCKS_MEMBER_NAME=N1
-    image: sundb_group_primary
+    image: goldilocks_cluster
     networks:
       cluster_network:
         ipv4_address: 172.18.18.15
@@ -87,6 +92,7 @@ services:
     ports:
       - "47566:22581"
  g3n2:
+    hostname: g3n2
     build :
       context : ./dockerfiles 
       dockerfile : Dockerfile
@@ -95,7 +101,7 @@ services:
       - GOLDILOCKS_CLUSTER_PORT=10101
       - GOLDILOCKS_CLUSTER_GROUP=G3
       - GOLDILOCKS_MEMBER_NAME=N2
-    image: sundb_secondary
+    image: goldilocks_cluster
     networks:
       cluster_network:
         ipv4_address: 172.18.18.16
@@ -105,6 +111,7 @@ services:
       - "47567:22581"
 
  g4n1:
+    hostname: g4n1
     build :
       context : ./dockerfiles 
       dockerfile : Dockerfile
@@ -113,7 +120,7 @@ services:
       - GOLDILOCKS_CLUSTER_PORT=10101
       - GOLDILOCKS_CLUSTER_GROUP=G4
       - GOLDILOCKS_MEMBER_NAME=N1
-    image: sundb_group_primary
+    image: goldilocks_cluster
     networks:
       cluster_network:
         ipv4_address: 172.18.18.17
@@ -122,6 +129,7 @@ services:
     ports:
       - "47568:22581"
  g4n2:
+    hostname: g4n2
     build :
       context : ./dockerfiles 
       dockerfile : Dockerfile
@@ -130,7 +138,7 @@ services:
       - GOLDILOCKS_CLUSTER_PORT=10101
       - GOLDILOCKS_CLUSTER_GROUP=G4
       - GOLDILOCKS_MEMBER_NAME=N2
-    image: sundb_secondary
+    image: goldilocks_cluster
     networks:
       cluster_network:
         ipv4_address: 172.18.18.18
